@@ -22,43 +22,35 @@ let answers=document.querySelectorAll(".faq-questions-answers");
             });
         });
 
-  //Features slider      
-const marker1 = document.querySelector('.marker-1')
-const tab1 = document.querySelector('.tab-1')
+  //Features slider     
+  
+// Add class "active" to the first marker by default
+document.querySelector('.marker-1').classList.add('active');
 
-const marker2 = document.querySelector('.marker-2')
-const tab2 = document.querySelector('.tab-2')
+// Show the first tab by default
+document.querySelector('.tab-1').classList.add('show');
 
-const marker3 = document.querySelector('.marker-3')
-const tab3 = document.querySelector('.tab-3')
+// Show/hide different tabs on clicking markers
+const markers = document.querySelectorAll('.marker');
 
-marker1.addEventListener('click', function () {
-  marker1.classList.add('active')
-  marker2.classList.remove('active')
-  marker3.classList.remove('active')
+markers.forEach((marker, index) => {
+  marker.addEventListener('click', () => {
+    // Remove "active" class from all markers
+    markers.forEach(marker => marker.classList.remove('active'));
 
-  tab1.classList.add('show')
-  tab2.classList.remove('show')
-  tab3.classList.remove('show')
-})
-marker2.addEventListener('click', function () {
-  marker2.classList.add('active')
-  marker1.classList.remove('active')
-  marker3.classList.remove('active')
+    // Add "active" class to the clicked marker
+    marker.classList.add('active');
 
-  tab2.classList.add('show')
-  tab3.classList.remove('show')
-  tab1.classList.remove('show')
-})
-marker3.addEventListener('click', function () {
-  marker3.classList.add('active')
-  marker1.classList.remove('active')
-  marker2.classList.remove('active')
+    // Hide all tabs
+    const tabs = document.querySelectorAll('.bookmarking');
+    tabs.forEach(tab => tab.classList.remove('show'));
 
-  tab3.classList.add('show')
-  tab2.classList.remove('show')
-  tab1.classList.remove('show')
-})
+    // Show the tab corresponding to the clicked marker
+    document.querySelector(`.tab-${index + 1}`).classList.add('show');
+  });
+});
+
+
         
       
 
